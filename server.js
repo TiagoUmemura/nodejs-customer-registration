@@ -40,5 +40,7 @@ app.post('/customers/', jsonParser, (req, res) => {
 })
 
 app.get('/customers', (req, res) => {
-	let cursor = db.collection('customers').find()
+	db.collection('customers').find().toArray((err, results) => {
+		res.send(results)
+	})
 })
